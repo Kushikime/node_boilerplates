@@ -1,0 +1,12 @@
+{
+  "name": "node_boilerplates",
+  "version": "1.0.0",
+  "description": "A robust, scalable, and production-ready boilerplate built with Express.js and TypeScript. Designed with best practices in mind, it includes essential features like extendable authentication, tracing, error handling, and flexible database abstractions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
