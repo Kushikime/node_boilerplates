@@ -1,56 +1,105 @@
-# 🚀 Node.js Boilerplates Repository
+# 🚀 Express.js Boilerplate
 
-Welcome! This repository contains boilerplate templates for quickly bootstrapping robust, scalable, and maintainable Node.js backend applications using various popular frameworks.
-
-The repository is structured into clearly defined branches, each tailored to a specific Node.js backend framework:
+A robust, scalable, and production-ready boilerplate built with Express.js and TypeScript. Designed with best practices in mind, it includes essential features like extendable authentication, tracing, error handling, and flexible database abstractions.
 
 ---
 
-## 📌 Available Branches
+## 🌟 Key Features
 
-- **Express.js**: Production-ready Express.js boilerplate using TypeScript.
-- **Fastify** *(coming soon)*: Optimized Fastify setup for high performance and scalability.
-- **Nest.js** *(coming soon)*: Modular, enterprise-grade Nest.js boilerplate with best practices.
-
-Each branch includes:
-
-- **Extendable Authentication**: Configurable JWT authentication setup.
-- **Repository Pattern**: Support for multiple databases (MongoDB and PostgreSQL).
-- **Robust Error Handling**: Custom error management and centralized middleware.
-- **Tracing & Observability**: Built-in tracing with OpenTelemetry.
-- **Secure Configuration Management**: Secure handling of environment variables and secrets.
-- **Testing Infrastructure**: Jest configurations for unit and integration testing.
+- **Clean Architecture**: Well-defined separation of concerns.
+- **Extendable Authentication**: JWT-based auth setup, easily extendable for OAuth, API keys, and more.
+- **Flexible Data Layer**: Repository pattern implementation with support for MongoDB and PostgreSQL.
+- **Error Handling**: Custom error classes and centralized error handling middleware.
+- **Tracing & Observability**: Integrated OpenTelemetry setup for effective tracing and debugging.
+- **Secure Configuration**: Secure management of environment variables and secrets using dotenv.
 
 ---
 
-## 🔄 How to Use This Repository
+## 📁 Project Structure
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/node-boilerplates.git
-   ```
-
-2. **Checkout Desired Branch:**
-   For example, to use the Express.js boilerplate:
-   ```bash
-   git checkout express
-   ```
-
-3. **Set Up Project:**
-   Follow the instructions provided in the README of the chosen branch to set up and configure your project.
-
-4. **Customize Your Application:**
-   Start building your application logic on top of the pre-configured boilerplate setup.
+```
+express-boilerplate/
+├── src/
+│   ├── api/
+│   │   └── v1/
+│   │       ├── controllers/
+│   │       ├── routes/
+│   │       └── middlewares/
+│   ├── core/
+│   │   ├── errors/
+│   │   ├── tracing/
+│   │   └── config/
+│   ├── repositories/
+│   │   ├── interfaces/
+│   │   ├── mongo/
+│   │   └── postgres/
+│   ├── services/
+│   │   └── identity/
+│   ├── utils/
+│   │   └── third-party-wrappers/
+│   └── app.ts
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── Dockerfile
+├── docker-compose.yml
+├── .env.example
+├── package.json
+└── tsconfig.json
+```
 
 ---
 
-## 🌟 Contribution
+## 🛠️ Core Components
 
-Feel free to open issues or submit pull requests to improve the boilerplates or suggest additional frameworks.
+### Authentication
+- Extendable middleware supporting JWT by default.
+- Ready-to-use hooks to integrate OAuth or API keys easily.
+
+### Repository Pattern
+- Abstracted interfaces for MongoDB and PostgreSQL.
+- Easy switching between database implementations.
+
+### Error Handling
+- Custom error classes for consistent error responses.
+- Centralized middleware to handle and format errors consistently.
+
+### Tracing
+- Integrated with OpenTelemetry.
+- Provides comprehensive tracing across microservices and APIs.
+
+---
+
+## 🔐 Security & Secrets
+
+- Environment variables handled securely through `.env`.
+- Examples provided in `.env.example`.
+
+---
+
+## 📖 Documentation
+
+- Optional Swagger integration for clear API documentation.
+- Comprehensive inline code comments and examples provided.
+
+---
+
+## 🧪 Testing
+
+- Pre-configured Jest setup for unit and integration tests.
+- Easily extendable for end-to-end testing scenarios.
+
+---
+
+## 🚧 Future Improvements
+
+- Integration of advanced CI/CD pipelines.
+- Addition of Infrastructure-as-Code (IaC) templates.
+- Further enhancements in monitoring and logging integrations.
 
 ---
 
 ## 📜 License
 
-This repository and its boilerplates are licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
