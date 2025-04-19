@@ -1,5 +1,10 @@
-const main = () => {
-  console.log('Hello, world!');
-};
+import express from 'express';
+import healthRoutes from './routes/v1/health.route';
 
-main();
+const app = express();
+
+app.use('/', healthRoutes);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
