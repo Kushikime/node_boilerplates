@@ -1,6 +1,6 @@
 import express from 'express';
-import healthRoutes from './api/v1/health/health.route';
-import zodTestRoutes from './api/v1/zod-test/zod-test.route';
+import healthRoutes from '@api/v1/health/health.route';
+import zodTestRoutes from '@api/v1/zod-test/zod-test.route';
 const app = express();
 
 // Middlewares

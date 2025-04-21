@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { z } from 'zod';
-import { requestBodyValidator } from '../../../shared/middlewares/zodRequestValidator';
+import { requestBodyValidator } from '@shared/middlewares/zodRequestValidator';
 import { zodTestSchema } from './zod-test.schemas';
 import ZodTestController from './zod-test.controller';
 import ZodTestService from './zod-test.service';

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import ZodTestService from './zod-test.service';
 import { ZodTestDto } from './zod-test.schemas';
-import { RequestWithBody } from '../../../shared/utils/types';
+import { RequestWithBody } from '@shared/utils/types';
 
 class ZodTestController {
   constructor(private zodTestService: ZodTestService) {}
