@@ -1,5 +1,5 @@
-import MongoClient from '@/shared/clients/mongoClient';
-import TracerClient from '@/shared/clients/tracerClient';
+import MongoClient from '@/infra/clients/mongoClient';
+import TracerClient from '@/infra/clients/tracerClient';
 import logger from '@/shared/utils/logger';
 
 export const bootstrap = async () => {

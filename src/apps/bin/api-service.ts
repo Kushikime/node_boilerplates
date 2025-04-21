@@ -1,7 +1,7 @@
 import express from 'express';
 import healthRoute from '@/api/v1/health/health.route';
 import zodTestRoutes from '@/api/v1/zod-test/zod-test.route';
-import { bootstrap } from '@/shared/bootstrap';
+import { bootstrap } from '@/infra/bootstrap';
 
 const main = async () => {
   await bootstrap();
