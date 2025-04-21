@@ -4,16 +4,22 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Typsecript App",
+      "name": "Debug TypeScript App",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\src\\app.ts",
+      "program": "${workspaceFolder}/src/app.ts",
       "runtimeArgs": [
         "-r",
         "ts-node/register",
         "-r",
         "tsconfig-paths/register"
       ],
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ],
+      "console": "integratedTerminal"
     }
   ]
 }
