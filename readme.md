@@ -1,105 +1,178 @@
 # 🚀 Express.js Boilerplate
 
-A robust, scalable, and production-ready boilerplate built with Express.js and TypeScript. Designed with best practices in mind, it includes essential features like extendable authentication, tracing, error handling, and flexible database abstractions.
+A robust, scalable, and production-ready boilerplate built with Express.js and TypeScript. Designed with best practices in mind, it includes essential features like strong request validation with Zod, API versioning, health checks, and a clean architecture pattern.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Current Features
 
-- **Clean Architecture**: Well-defined separation of concerns.
-- **Extendable Authentication**: JWT-based auth setup, easily extendable for OAuth, API keys, and more.
-- **Flexible Data Layer**: Repository pattern implementation with support for MongoDB and PostgreSQL.
-- **Error Handling**: Custom error classes and centralized error handling middleware.
-- **Tracing & Observability**: Integrated OpenTelemetry setup for effective tracing and debugging.
-- **Secure Configuration**: Secure management of environment variables and secrets using dotenv.
+- **TypeScript Integration**: Fully typed codebase for better developer experience and error prevention.
+- **Clean Architecture**: Well-defined separation of concerns with routes, controllers, and services.
+- **API Versioning**: Future-proof API structure with versioning (v1, v2, etc.).
+- **Request Validation**: Robust validation using Zod for ensuring data integrity.
+- **Health Checks**: Built-in health endpoints following Kubernetes conventions (healthz, readyz, livez).
+- **Middleware Pipeline**: Customizable middleware for request processing.
 
 ---
 
-## 📁 Project Structure
+## 📁 Current Project Structure
 
 ```
-express-boilerplate/
+node_boilerplates/
 ├── src/
 │   ├── api/
-│   │   └── v1/
-│   │       ├── controllers/
-│   │       ├── routes/
-│   │       └── middlewares/
+│   │   ├── v1/
+│   │   │   ├── health/
+│   │   │   │   ├── health.route.ts
+│   │   │   │   ├── health.controller.ts
+│   │   │   │   └── health.service.ts
+│   │   │   └── zod-test/
+│   │   │       ├── zod-test.route.ts
+│   │   │       ├── zod-test.controller.ts (WIP)
+│   │   │       └── zod-test.service.ts (WIP)
+│   │   └── v2/
 │   ├── core/
-│   │   ├── errors/
-│   │   ├── tracing/
-│   │   └── config/
-│   ├── repositories/
-│   │   ├── interfaces/
-│   │   ├── mongo/
-│   │   └── postgres/
-│   ├── services/
-│   │   └── identity/
-│   ├── utils/
-│   │   └── third-party-wrappers/
+│   │   └── models/
+│   ├── shared/
+│   ├── config/
 │   └── app.ts
-├── tests/
-│   ├── unit/
-│   └── integration/
-├── Dockerfile
-├── docker-compose.yml
-├── .env.example
+├── dist/
+├── node_modules/
 ├── package.json
-└── tsconfig.json
+├── package-lock.json
+├── tsconfig.json
+└── .gitignore
 ```
 
 ---
 
-## 🛠️ Core Components
+## 🛠️ Technology Choices & Architectural Decisions
 
-### Authentication
-- Extendable middleware supporting JWT by default.
-- Ready-to-use hooks to integrate OAuth or API keys easily.
+### TypeScript
+- Provides static type-checking during development
+- Enhances code quality and maintainability
+- Improves IDE support with better autocompletion and error detection
 
-### Repository Pattern
-- Abstracted interfaces for MongoDB and PostgreSQL.
-- Easy switching between database implementations.
+### Express.js
+- Lightweight and flexible web framework
+- Excellent middleware ecosystem
+- High performance and widespread adoption
 
-### Error Handling
-- Custom error classes for consistent error responses.
-- Centralized middleware to handle and format errors consistently.
+### Zod for Validation
+- Runtime type validation with TypeScript integration
+- Self-documenting schemas
+- Excellent error handling and detailed validation errors
+- Type inference from schemas for end-to-end type safety
 
-### Tracing
-- Integrated with OpenTelemetry.
-- Provides comprehensive tracing across microservices and APIs.
+### API Versioning
+- Future-proofs the API by isolating changes between versions
+- Enables backward compatibility while evolving the API
+- Organized directory structure by version
 
----
+### Service-Controller-Route Pattern
+- Clear separation of concerns:
+  - Routes: Define API endpoints and connect them to controllers
+  - Controllers: Handle HTTP requests/responses and delegate business logic to services
+  - Services: Contain business logic, independent of HTTP context
 
-## 🔐 Security & Secrets
-
-- Environment variables handled securely through `.env`.
-- Examples provided in `.env.example`.
-
----
-
-## 📖 Documentation
-
-- Optional Swagger integration for clear API documentation.
-- Comprehensive inline code comments and examples provided.
-
----
-
-## 🧪 Testing
-
-- Pre-configured Jest setup for unit and integration tests.
-- Easily extendable for end-to-end testing scenarios.
+### Health Checks
+- Following Kubernetes patterns with standard endpoints:
+  - `/healthz`: Basic health check
+  - `/readyz`: Application readiness check
+  - `/livez`: Application liveness check
 
 ---
 
-## 🚧 Future Improvements
+## 🚀 Getting Started
 
-- Integration of advanced CI/CD pipelines.
-- Addition of Infrastructure-as-Code (IaC) templates.
-- Further enhancements in monitoring and logging integrations.
+### Prerequisites
+- Node.js (v14+)
+- npm or yarn
+
+### Installation
+```
+git clone <repository-url>
+cd node_boilerplates
+npm install
+```
+
+### Development
+```
+npm run dev
+```
+
+### Production Build
+```
+npm run build
+npm start
+```
+
+---
+
+## 🔮 Planned Features & Roadmap
+
+- **Error Handling**: Centralized error handling middleware
+- **Authentication**: JWT-based authentication with role-based access control
+- **Database Integration**: Flexible data access layer with repository pattern
+- **Logging**: Structured logging for production environments
+- **OpenAPI Documentation**: Automatic API documentation generation
+- **Unit & Integration Testing**: Test setup with Jest
+- **Docker Support**: Containerization for deployment
+- **CI/CD Pipeline**: Automated testing and deployment
+- **Rate Limiting & Security Headers**: Additional security features
+- **Environment Configuration**: Secure configuration management
+- **Monitoring & Tracing**: Observability infrastructure
+
+---
+
+## 📖 Usage Examples
+
+### Creating a New API Endpoint
+
+1. Create a new directory in `src/api/v1/` for your feature
+2. Add route, controller, and service files following the existing pattern
+3. Define your Zod validation schemas in the route file
+4. Implement your business logic in the service
+5. Register your routes in `app.ts`
+
+### Request Validation with Zod
+
+```typescript
+// Example from zod-test.route.ts
+const userSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  password: z.string().min(8),
+  age: z.number().min(18),
+});
+
+router.post(
+  '/',
+  [
+    // Middleware to validate request body against schema
+    (req: Request, res: Response, next: NextFunction) => {
+      const { success, data, error } = userSchema.safeParse(req.body);
+      
+      if (!success) {
+        return res.status(400).json({
+          message: 'Invalid input data',
+          error: error.flatten().fieldErrors,
+        });
+      }
+      
+      next();
+    },
+  ],
+  // Request handler
+  (req: Request, res: Response) => {
+    res.send('Valid data received');
+  },
+);
+```
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License - see the LICENSE file for details.
 
