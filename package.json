@@ -1,0 +1,31 @@
+{
+  "name": "node_boilerplates",
+  "version": "1.0.0",
+  "description": "A robust, scalable, and production-ready boilerplate built with Express.js and TypeScript. Designed with best practices in mind, it includes essential features like extendable authentication, tracing, error handling, and flexible database abstractions.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "tsc": "npx tsc",
+    "tsc-alias": "npx tsc-alias",
+    "build": "npm run clean && npm run tsc && npm run tsc-alias",
+    "dev.api": "nodemon --exec ts-node -r tsconfig-paths/register src/apps/bin/api-service.ts",
+    "start.api": "node -r tsconfig-paths/register dist/apps/bin/api-service.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/winston": "^2.4.4",
+    "nodemon": "^3.1.9",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "winston": "^3.17.0",
+    "zod": "^3.24.3"
+  }
+}
